@@ -28,7 +28,7 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
 
 export const plugins = [
   require("@tailwindcss/forms"),
