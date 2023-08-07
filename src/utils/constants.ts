@@ -110,7 +110,7 @@ const CAMERAS_DICTIONARY = [
     name: "Miniature Thermal Emission Spectometer (Mini-TES)",
     abbreviation: "MINITIES",
   },
-  { name: "All", abbreviation: "all" },
+  { name: "All cameras", abbreviation: "all" },
 ];
 
 export {

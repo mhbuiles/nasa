@@ -27,11 +27,11 @@ type RoverPhotosProps = {
   tab: string;
 };
 
-const defaultCamera = "All";
+const defaultCamera = "All cameras";
 
 export const RoverPhotos = ({ tab }: RoverPhotosProps): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
-  const [camera, setCamera] = useState("All");
+  const [camera, setCamera] = useState("All cameras");
   const [earthDate, setEarthDate] = useState<boolean>(false);
   const [sol, setSol] = useState<boolean>(false);
 
@@ -193,7 +193,7 @@ export const RoverPhotos = ({ tab }: RoverPhotosProps): React.ReactElement => {
         <Select
           value={camera}
           onChange={setCamera}
-          label="Pick a camera"
+          label=""
           options={cameraOptions}
         />
       </div>
