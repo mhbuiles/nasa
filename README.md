@@ -17,6 +17,8 @@
 ### TanStack/React Query.
 ### Used HeadlessUI unstyled components (Select, Switch and Tabs), custom styles added using Tailwind. It's important to mention that custom components were created as wrappers for the external lybrary's components, so they're not used directly out of the box inside the components and pages files created for this app.
 
+### Due to time constraints, making this app responsive was not a priority.
+
 ## *.env* file variables:
 
 ### 1. NEXT_PUBLIC_API_URL="https://api.nasa.gov/mars-photos/api/v1/rovers"
