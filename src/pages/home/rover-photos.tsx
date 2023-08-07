@@ -1,5 +1,6 @@
 import { PhotoPreview } from "./photo-preview";
 import { classNames } from "@utils/formatters";
+import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
 import { useSelectedPhoto } from "@context/selected-photo-context";
 import { useState } from "react";
@@ -26,11 +27,11 @@ type RoverPhotosProps = {
   tab: string;
 };
 
-const defaultCamera = "All";
+const defaultCamera = "All cameras";
 
 export const RoverPhotos = ({ tab }: RoverPhotosProps): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
-  const [camera, setCamera] = useState("All");
+  const [camera, setCamera] = useState("All cameras");
   const [earthDate, setEarthDate] = useState<boolean>(false);
   const [sol, setSol] = useState<boolean>(false);
 
@@ -144,8 +145,18 @@ export const RoverPhotos = ({ tab }: RoverPhotosProps): React.ReactElement => {
 
   const dataLength = filtersApplied ? photos()?.length : latestPhotos()?.length;
 
-  const onQueryBySolDate = () => setSol((prevState) => !prevState);
-  const onQueryByEarthDateDay = () => setEarthDate((prevState) => !prevState);
+  const onQueryBySolDate = () => {
+    setSol((prevState) => !prevState);
+    sol
+      ? toast.error("Sol date filter cleared")
+      : toast.success("Sol date filter applied");
+  };
+  const onQueryByEarthDateDay = () => {
+    setEarthDate((prevState) => !prevState);
+    sol
+      ? toast.error("Earth date filter cleared")
+      : toast.success("Earth date filter applied");
+  };
 
   const onClickPhoto = (photo: RoverPhoto) => {
     setSelectedPhoto({
@@ -182,7 +193,7 @@ export const RoverPhotos = ({ tab }: RoverPhotosProps): React.ReactElement => {
         <Select
           value={camera}
           onChange={setCamera}
-          label="Pick a camera"
+          label=""
           options={cameraOptions}
         />
       </div>
